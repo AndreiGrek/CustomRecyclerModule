@@ -1,13 +1,15 @@
 package com.example.customrecyclermodule
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomRecyclerAdapter(private val listOfItems: MutableList<String>) :
+class CustomRecyclerAdapter(
+    private val listOfItems: MutableList<String>,
+    private val onClick: (itemName: String) -> Unit = {}
+) :
     RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -32,11 +34,8 @@ class CustomRecyclerAdapter(private val listOfItems: MutableList<String>) :
     private fun bindTest(holder: CustomViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.recycler_item).text = listOfItems[position]
 
-        /**
-         * Листенер повесил сам. Не ручаюсь за него правильность :)
-         */
         holder.itemView.setOnClickListener {
-            Log.d("LOGQ", "Нажат на элемент ${listOfItems[position]}")
+            onClick.invoke(listOfItems[position])
         }
     }
 
