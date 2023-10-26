@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class CustomRecyclerAdapter(
-    private val listOfItems: MutableList<String>,
+    private val listOfItems: MutableList<String> = mutableListOf(),
     private val onClick: (itemName: String) -> Unit = {}
 ) :
     RecyclerView.Adapter<CustomViewHolder>() {
