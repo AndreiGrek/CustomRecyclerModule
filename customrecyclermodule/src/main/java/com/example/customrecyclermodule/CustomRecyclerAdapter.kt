@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * @param listOfItems is the list of elements that we want to display in the recycler.
  * By default, an empty list is passed to the constructor.
- * @param onClick specifies the action when clicked. By default is Unit.
+ * @param onClick is lambda that specifies the action when clicked. By default is Unit.
  * @param item is view of single element in recycler. By default it is simple TextView.
  */
 class CustomRecyclerAdapter(
