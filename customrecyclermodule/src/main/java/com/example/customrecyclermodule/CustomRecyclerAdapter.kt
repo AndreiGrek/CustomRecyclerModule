@@ -6,9 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * @param listOfItems is the list of elements that we want to display in the recycler.
+ * By default, an empty list is passed to the constructor.
+ * @param onClick specifies the action when clicked. By default is Unit.
+ * @param item is view of single element in recycler. By default it is simple TextView.
+ */
 class CustomRecyclerAdapter(
     private val listOfItems: MutableList<String> = mutableListOf(),
-    private val onClick: (itemName: String) -> Unit = {}
+    private val onClick: (itemName: String) -> Unit = {},
+    private val item: Int = R.layout.recycler_item
 ) :
     RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -16,7 +23,7 @@ class CustomRecyclerAdapter(
         val inflater = LayoutInflater.from(parent.context)
         return CustomViewHolder(
             inflater.inflate(
-                R.layout.recycler_item,
+                item,
                 parent,
                 false
             )
@@ -39,12 +46,18 @@ class CustomRecyclerAdapter(
         }
     }
 
+    /**
+     * The function updates the recycler by passing a list with elements to it.
+     */
     fun updateItemList(updatedList: List<String>) {
         listOfItems.clear()
         listOfItems.addAll(updatedList)
         notifyDataSetChanged()
     }
 
+    /**
+     * The function adds a new element to the recycler.
+     */
     fun addNewItemToList(item: String) {
         listOfItems.add(item)
         notifyDataSetChanged()
