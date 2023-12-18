@@ -1,6 +1,8 @@
 # CustomRecyclerModule
 [![](https://jitpack.io/v/AndreiGrek/CustomRecyclerModule.svg)](https://jitpack.io/#AndreiGrek/CustomRecyclerModule)
 
+[Release Notes](https://github.com/AndreiGrek/CustomRecyclerModule/blob/master/ChangeLog.md)
+
 ### Dependencies
 In `build.gradle` module level add dependency:
 ```groovy
