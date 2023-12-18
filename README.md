@@ -8,9 +8,9 @@ implementation: 'com.github.AndreiGrek:CustomRecyclerModule:x.y.z'
 ```
 In `settings.gradle` add `mavenCentral()` repository:
 ``` groovy
-pluginManagement {
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
     }
