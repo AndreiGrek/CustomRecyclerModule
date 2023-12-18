@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView
  * @param listOfItems is the list of elements that we want to display in the recycler.
  * By default, an empty list is passed to the constructor.
  * @param onClick is lambda that specifies the action when clicked. By default is Unit.
- * @param item is view of single element in recycler. By default it is simple TextView.
+ * @param itemLayout is view of single element in recycler. By default it is simple TextView.
+ * @param itemId is id of single element in recycler. Has default value.
  */
 class CustomRecyclerAdapter(
     private val listOfItems: MutableList<String> = mutableListOf(),
     private val onClick: (itemName: String) -> Unit = {},
-    private val item: Int = R.layout.recycler_item
+    private val itemLayout: Int = R.layout.recycler_item,
+    private val itemId: Int = R.id.recycler_item,
 ) :
     RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -23,7 +25,7 @@ class CustomRecyclerAdapter(
         val inflater = LayoutInflater.from(parent.context)
         return CustomViewHolder(
             inflater.inflate(
-                item,
+                itemLayout,
                 parent,
                 false
             )
@@ -39,7 +41,7 @@ class CustomRecyclerAdapter(
     }
 
     private fun bindTest(holder: CustomViewHolder, position: Int) {
-        holder.itemView.findViewById<TextView>(R.id.recycler_item).text = listOfItems[position]
+        holder.itemView.findViewById<TextView>(itemId).text = listOfItems[position]
 
         holder.itemView.setOnClickListener {
             onClick.invoke(listOfItems[position])
